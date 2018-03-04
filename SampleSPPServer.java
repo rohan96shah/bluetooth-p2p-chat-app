@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.bluetooth.*;
 import javax.microedition.io.*;
@@ -19,7 +21,7 @@ import javax.microedition.io.*;
  * Class that implements an SPP Server which accepts single line of
  * message from an SPP client and sends a single line of response to the client.
  */
-public class SampleSPPServer
+public class SampleSPPServer implements Runnable
 {
 
     //start server
@@ -69,6 +71,27 @@ public class SampleSPPServer
 
         SampleSPPServer sampleSPPServer = new SampleSPPServer();
         sampleSPPServer.startServer();
+
+    }
+    
+    public void run()
+    {
+        //display local device address and name
+        LocalDevice localDevice = null;
+        try {
+            localDevice = LocalDevice.getLocalDevice();
+        } catch (BluetoothStateException ex) {
+            Logger.getLogger(SampleSPPServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Address: " + localDevice.getBluetoothAddress());
+        System.out.println("Name: " + localDevice.getFriendlyName());
+
+        SampleSPPServer sampleSPPServer = new SampleSPPServer();
+        try {
+            sampleSPPServer.startServer();
+        } catch (IOException ex) {
+            Logger.getLogger(SampleSPPServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 }
