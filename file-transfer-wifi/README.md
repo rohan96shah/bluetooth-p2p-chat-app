@@ -15,5 +15,5 @@
   <li>After connection has been established, enter “download “ filename to download the file desired. Also, you can enter “index” to get a    list of files in the directory.</li>
 </ol>
 
-Assumptions: We have implemented Random Number generator in the Start.java file that will generate Boolean values, that is 0 and 1. We are assuming that it will generate an equal number of 0’s and 1’s over a period of time. 
+Assumptions: I have implemented Random Number generator in the Start.java file that will generate Boolean values, that is 0 and 1. I am assuming that it will generate an equal number of 0’s and 1’s over a period of time. 
 
